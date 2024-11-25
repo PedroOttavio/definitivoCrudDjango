@@ -1,4 +1,4 @@
-from django.views.generic import ListView, CreateView
+from django.views.generic import ListView, CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
 
 from .models import Voluntario
@@ -20,4 +20,17 @@ class VoluntarioAddView(CreateView):
     model = Voluntario
     form_class = VoluntarioModelForm
     template_name = 'voluntario_form.html'
+    success_url = reverse_lazy('voluntarios')
+    
+    
+class VoluntarioUpdateView(UpdateView):
+    model = Voluntario
+    form_class = VoluntarioModelForm
+    template_name = 'voluntario_form.html'
+    success_url = reverse_lazy('voluntarios')
+    
+    
+class VoluntarioDeleteView(DeleteView):
+    model = Voluntario
+    template_name = 'voluntario_apagar.html'
     success_url = reverse_lazy('voluntarios')

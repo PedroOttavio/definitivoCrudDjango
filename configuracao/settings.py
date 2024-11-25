@@ -39,6 +39,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 ]
 
+INSTALLED_APPS += ['django_bootstrap5',]
+
+
 INSTALLED_APPS += [
     'home', 'voluntarios'
 ]
