@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+{% load static %}
+{% include 'head.html' %}
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container-fluid">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+
+                <a class="navbar-brand" href="{% url 'index' %}"><i class="fas fa-home"></i> Início</a>
+
+                <ul class="navbar-nav me-auto">
+                    <!-- Menu Vítimas -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="vitimasDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Vítimas
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="vitimasDropdown">
+                            <li><a class="dropdown-item" href="#">Cadastrar Vítima</a></li>
+                            <li><a class="dropdown-item" href="#">Listar Vítimas</a></li>
+                        </ul>
+                    </li>
+                    <!-- Menu Voluntários -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="voluntariosDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Voluntários
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="voluntariosDropdown">
+                            <li><a class="dropdown-item" href="{% url 'voluntario_adicionar' %}">Cadastrar Voluntário</a></li>
+                            <li><a class="dropdown-item" href="{% url 'voluntarios' %}">Listar Voluntários</a></li>
+                        </ul>
+                    </li>
+                    <!-- Menu Abrigos -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="abrigosDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Abrigos
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="abrigosDropdown">
+                            <li><a class="dropdown-item" href="#">Cadastrar Abrigo</a></li>
+                            <li><a class="dropdown-item" href="#">Listar Abrigos</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <a class="btn btn-outline-light" href="#"><i class="fas fa-sign-in-alt"></i> Login</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Conteúdo Principal -->
+    <div class="container mt-4">
+        {% block content %}
+
+
+        
+        {% endblock %}
+    </div>
+
+    <!-- Rodapé -->
+     
+    {% include 'footer.html' %}
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
