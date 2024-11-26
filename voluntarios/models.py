@@ -19,14 +19,13 @@ class Voluntario(Pessoa):
     especialidade = models.CharField('Especialidade', max_length=100, help_text='Especialidade do voluntário')
     disponibilidade = models.CharField('Disponibilidade', max_length=100, help_text='Horários disponíveis')
     experiencia = models.CharField('Experiência', max_length=100, help_text='Experiência anterior')
-    
+    # abrigo = models.ForeignKey('Abrigo', on_delete=models.PROTECT, verbose_name='Abrigo', help_text='Abrigo do voluntário')
     
     class Meta:
         verbose_name = 'Voluntário'
         verbose_name_plural = 'Voluntários'
         
-        def __str__(self):
-            return self.nome
-    
+    def __str__(self):
+        return super().nome
     
     

@@ -1,0 +1,44 @@
+{% extends 'principal.html' %}
+{% load django_bootstrap5 %}
+{% block content %}
+<div class="card shadow m-3 col-md-8 mx-auto">
+        <div class="card-body">
+            <h3 class="text-center">Dados da Vitima</h3>
+            
+            <!-- Exibe informações do voluntário -->
+            <div class="mt-4">
+                <p><strong>Nome:</strong> {{ vitima.nome }}</p>
+                <p><strong>Idade:</strong> {{ vitima.idade }}</p>
+                <p><strong>Telefone:</strong> {{ vitima.fone }}</p>
+                <p><strong>Endereço:</strong> {{ vitima.endereco }}</p>
+                <p><strong>E-mail:</strong> {{ vitima.email }}</p>
+                <p><strong>CPF:</strong> {{ vitima.cpf }}</p>
+                <p><strong>Sexo:</strong> {{ vitima.sexo }}</p>
+                <p><strong>Especialidade:</strong> {{ vitima.data_resgate }}</p>
+                <p><strong>Disponibilidade:</strong> {{ vitima.necessidades_especiais }}</p>
+                <p><strong>Experiência:</strong> {{ vitima.numero_dependentes }}</p>
+                <p><strong>Experiência:</strong> {{ vitima.data_resgate }}</p>
+
+                {% if object.foto.url is not empty %}
+                    <div class="col-2">
+                        <img src="{{ object.foto.url }}" class="img-thumbnail" alt="{{ vitima.nome }}" width="100px" height="100px">
+                    </div>
+                {% endif %}
+                <p class="p-2 mt-2">Confirma a exclusão do registro da vitima: <strong>{{ object }}</strong>?</p>
+
+            <!-- Formulário para ações -->
+            <form method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                {% bootstrap_form form %}
+                <div class="text-end mt-4">
+                    {% bootstrap_button button_type="submit" content="Sim, excluir" %}
+        
+                    <a href="{% url 'vitimas' %}" class="btn btn-secondary text-white" type="button">
+                        <span class="text">Cancelar</span>
+                    </a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

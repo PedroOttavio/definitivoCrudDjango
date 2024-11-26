@@ -16,9 +16,13 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from django.conf import settings
+from django.conf.urls.static import static
 
+# incui as urls do voluntarios. Seguraaaa 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('home.urls')),
-    path('', include('voluntarios.urls')),      # incui as urls do voluntarios. Bora birlll
-]
+    path('', include('voluntarios.urls')),      
+    path('', include('vitimas.urls')),
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

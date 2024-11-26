@@ -4,6 +4,7 @@ from django.urls import reverse_lazy
 from django.core.paginator import Paginator
 from django.contrib import messages
 
+
 from .models import Voluntario
 from .forms import VoluntarioModelForm
 
@@ -16,8 +17,7 @@ class VoluntariosView(ListView):
         qs = super(VoluntariosView, self).get_queryset()
         if buscar:
             return qs.filter(nome__icontains=buscar)
-        return qs
-    
+        
         if qs.count() > 0:
             paginator = Paginator(qs, 1)
             listagem = paginator.get_page(self.request.GET.get('page'))
