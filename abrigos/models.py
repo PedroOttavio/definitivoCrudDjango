@@ -14,8 +14,8 @@ class Abrigo(models.Model):
     tipo = models.CharField('Tipo', max_length=20, help_text='Tipo do abrigo')
     descricao = models.TextField('Descrição', help_text='Descrição do abrigo')
     status = models.CharField('Status', max_length=20, help_text='Status do abrigo')
-    voluntarios = models.ManyToManyField(Voluntario, related_name='abrigos', help_text='Voluntários trabalhando neste abrigo')
-
+    voluntarios = models.ManyToManyField('voluntarios.Voluntario', related_name='abrigos', help_text='Voluntários trabalhando neste abrigo')
+    
 
     class Meta:
         verbose_name = 'Abrigo'

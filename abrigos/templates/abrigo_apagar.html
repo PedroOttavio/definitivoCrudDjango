@@ -1,0 +1,39 @@
+{% extends 'principal.html' %}
+{% load django_bootstrap5 %}
+{% block content %}
+<div class="card shadow m-3 col-md-8 mx-auto">
+    <div class="card-body">
+        <h3 class="text-center">Dados do Abrigo</h3>
+        
+        <!-- Exibe informações do voluntário -->
+        <div class="mt-4">
+            <p><strong>Nome:</strong> {{ abrigo.nome }}</p>
+            <p><strong>Endereço:</strong> {{ abrigo.endereco }}</p>
+            <p><strong>Capacidade:</strong> {{ abrigo.capacidade }}</p>
+            <p><strong>Fone:</strong> {{ abrigo.fone }}</p>
+            <p><strong>Tipo:</strong> {{ abrigo.tipo }}</p>
+            <p><strong>Descrição:</strong> {{ abrigo.descricao }}</p>
+            <p><strong>Status:</strong> {{ abrigo.status }}</p>
+            <p><strong>Voluntarios:</strong> {{ abrigo.voluntarios }}</p>
+        </div>
+
+        <!-- Quer mesmo excluir? -->
+        <div class="mt-4">
+            <p class="text-danger"><strong>Confirma a exclusão do abrigo:</strong> {{ abrigo.nome }}?</p>
+        </div>
+
+        <!-- Formulário para ações -->
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="text-end mt-4">
+                <button type="submit" class="btn btn-danger">
+                    <i class="bi bi-trash"></i> Sim, excluir
+                </button>
+                <a href="{% url 'abrigos' %}" class="btn btn-secondary text-white">
+                    <i class="bi bi-x-circle"></i> Cancelar
+                </a>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

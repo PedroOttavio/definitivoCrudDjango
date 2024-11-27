@@ -17,7 +17,7 @@ class Vitima(Pessoa):
     necessidades_especiais = models.CharField('Necessidades especiais', max_length=50, help_text='Necessidades especiais da vítima')
     data_cadastro = models.DateTimeField(auto_now_add=True)
     foto = StdImageField('Foto', upload_to='vitimas', delete_orphans=True, null = True, blank= True)
-    abrigo = models.ForeignKey(Abrigo, on_delete=models.CASCADE, related_name='vitimas', null= True, blank= True) # tem que lembrar de tirar o NULL 
+    abrigo = models.ForeignKey('abrigos.Abrigo', on_delete=models.CASCADE, related_name='vitimas', null= True, blank= True) # tem que lembrar de tirar o NULL 
                                                         #e blank depois de criar os abrigos
     
     
