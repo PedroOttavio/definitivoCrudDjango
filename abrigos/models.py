@@ -12,11 +12,9 @@ class Abrigo(models.Model):
     capacidade = models.IntegerField('Capacidade', help_text='Capacidade do abrigo')
     fone = models.CharField('Telefone', max_length=20, help_text='Telefone do abrigo')
     tipo = models.CharField('Tipo', max_length=20, help_text='Tipo do abrigo')
-    descricao = models.TextField('Descrição', help_text='Descrição do abrigo')
+    descricao = models.CharField('Descrição', max_length=50, help_text='Descrição do abrigo')
     status = models.CharField('Status', max_length=20, help_text='Status do abrigo')
     voluntarios = models.ManyToManyField('voluntarios.Voluntario', related_name='abrigos', help_text='Voluntários trabalhando neste abrigo')
-    
-
     class Meta:
         verbose_name = 'Abrigo'
         verbose_name_plural = 'Abrigos'

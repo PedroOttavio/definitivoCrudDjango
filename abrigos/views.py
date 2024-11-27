@@ -22,7 +22,7 @@ class AbrigosView(ListView):
             
             
         if qs.count() > 0:
-            paginator = Paginator(qs, 1)
+            paginator = Paginator(qs, 5)
             listagem = paginator.get_page(self.request.GET.get('page'))
             return listagem
         else:
