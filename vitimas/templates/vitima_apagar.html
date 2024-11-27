@@ -16,9 +16,12 @@
                 <p><strong>Sexo:</strong> {{ vitima.sexo }}</p>
                 <p><strong>Especialidade:</strong> {{ vitima.data_resgate }}</p>
                 <p><strong>Disponibilidade:</strong> {{ vitima.necessidades_especiais }}</p>
-                <p><strong>Experiência:</strong> {{ vitima.numero_dependentes }}</p>
-                <p><strong>Experiência:</strong> {{ vitima.data_resgate }}</p>
+                <p><strong>Numero de dependentes:</strong> {{ vitima.numero_dependentes }}</p>
+                <p><strong>Data do resgate:</strong> {{ vitima.data_resgate }}</p>
+                <p><strong>Abrigo:</strong> {{ vitima.abrigo }}</p>
+            </div>
 
+            <!-- Quer mesmo excluir? -->    
                 {% if object.foto.url is not empty %}
                     <div class="col-2">
                         <img src="{{ object.foto.url }}" class="img-thumbnail" alt="{{ vitima.nome }}" width="100px" height="100px">

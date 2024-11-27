@@ -28,5 +28,8 @@ class VitimaModelForm(forms.ModelForm):
             'email': {
                 'required': 'O e-mail da vitima é um campo obrigatório.', 'unique': 'Este e-mail já está cadastrado.',  
             },  
+            'abrigos': {
+                'required': 'O abrigo é um campo obrigatório.',
+            },
             
         }

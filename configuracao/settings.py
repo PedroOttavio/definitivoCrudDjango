@@ -45,7 +45,7 @@ INSTALLED_APPS += [
 
 
 INSTALLED_APPS += [
-    'home', 'voluntarios', 'vitimas',
+    'home', 'voluntarios', 'vitimas', 'abrigos',
 ]
 
 MIDDLEWARE = [
