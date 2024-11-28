@@ -1,0 +1,14 @@
+classe assistencia 
+
+	puxa abrigo, vitima, voluntario
+
+vitima de um abrigo, tem problema, voluntario especializado resolve
+
+
+login com permissões para pelo menos dois usuarios
+
+envio de email para cadastro de assistencia
+
+colocar abrigo no vitimas
+
+colocar abrigo no voluntarios
