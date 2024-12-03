@@ -9,6 +9,9 @@ login com permissões para pelo menos dois usuarios
 
 envio de email para cadastro de assistencia
 
-colocar abrigo no vitimas
+colocar uma coluna "abrigo" no vitimas
 
-colocar abrigo no voluntarios
+colocar uma coluna "abrigo" no voluntarios
+
+
+inserir uma tabela para o usuario selecionar quais abrigos ele está?
