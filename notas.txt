@@ -21,17 +21,27 @@ inserir uma tabela para o usuario selecionar quais abrigos ele está?
 -DAR UMA OLHADA NA INTERFACE DE SERVIÇOS, TALVEZ DE PARA USA-LA
 
 
--SLIDE DE AGENDAMENTO DJANGO11
 
 - dentro da aba de abrigos, criar um listar voluntarios e cadastrar voluntarios
 
+ANOTAÇÕES:
+- talvez precise criar uma nova interface para aplicar o many to many. Talvez aplicar em "Assistencia"?
+-slide da interface agendamento: django11
+===============================================================================================
+
 REGISTROS:
 
-03/12/24:
+03/12/2024:
 
--CORRIGIR MODELS ASSISTENCIA;
+-corrigir models assistencia
 - criação do app assistencia
 - inserção no installed app de configuracao
+
+
+04/12/2024
+-
+
+-----------------------------------------------------------------------------------------------
 
 -ForeignKey
 Um relacionamento um-para-muitos ocorre quando um registro em uma tabela
@@ -52,4 +62,4 @@ associativa. Neste casos, é preciso especificar o modelo que será usado para
 “gerenciar” a multiplicidade muitos-para-muitos. O modelo intermediário está
 associado ao relacionamento ManyToManyField pelo argumento through
 
-- talvez precise criar uma nova interface para aplicar o many to many. Talvez aplicar em "Assistencia"?
+
