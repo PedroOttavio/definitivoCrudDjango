@@ -1,0 +1,33 @@
+{% extends 'principal.html' %}
+{% load django_bootstrap5 %}
+{% block content %}
+
+<div class="card shadow m-3 mx-auto" style="max-width: 800px;">
+    <div class="card-body">
+        <h3 class="text-center mb-4">Cadastro de Voluntário</h3>
+        <form method="POST" enctype="multipart/form-data" class="needs-validation" novalidate>
+            {% csrf_token %}
+            {% bootstrap_form form %}
+            {% if object.foto.url is not empty %}
+            
+            <div class="row g-2">
+                <div class="col-12">
+                    <img src="{{ object.foto.url }}" class="img-thumbnail" width="100px" height="100px" alt="foto da vitima">
+                </div>
+            </div>
+
+            {% endif %}
+            
+            <!-- Botões de ação -->
+            <div class="text-end mt-4">
+
+                {% bootstrap_button button_type="submit" content="Salvar" %}
+                    <a href="{% url 'vitimas' %}" class="btn btn-secondary text-white" type="button">
+                        <span class="text">Cancelar</span>
+                    </a>
+            </div>
+        </form>
+    </div>
+</div>
+
+{% endblock %}

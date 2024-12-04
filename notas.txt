@@ -27,6 +27,8 @@ inserir uma tabela para o usuario selecionar quais abrigos ele está?
 ANOTAÇÕES:
 - talvez precise criar uma nova interface para aplicar o many to many. Talvez aplicar em "Assistencia"?
 -slide da interface agendamento: django11
+- falta fazer a tela de login;
+- iniciar o sistema da pagina de login;
 ===============================================================================================
 
 REGISTROS:
@@ -39,7 +41,11 @@ REGISTROS:
 
 
 04/12/2024
--
+-algumas alterações em assistencia: views, models, forms
+- templates precisa fazer tudo ainda;
+- falta fazer o urls.py
+- e provavelmente mais outras coisas
+
 
 -----------------------------------------------------------------------------------------------
 
