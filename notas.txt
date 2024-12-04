@@ -15,3 +15,41 @@ colocar uma coluna "abrigo" no voluntarios
 
 
 inserir uma tabela para o usuario selecionar quais abrigos ele está?
+
+
+-Para a interface de assistencia, podemos utilizar como base a interface "Agendamento", única diferença que o assistencia está se relacionando com um a mais.
+-DAR UMA OLHADA NA INTERFACE DE SERVIÇOS, TALVEZ DE PARA USA-LA
+
+
+-SLIDE DE AGENDAMENTO DJANGO11
+
+- dentro da aba de abrigos, criar um listar voluntarios e cadastrar voluntarios
+
+REGISTROS:
+
+03/12/24:
+
+-CORRIGIR MODELS ASSISTENCIA;
+- criação do app assistencia
+- inserção no installed app de configuracao
+
+-ForeignKey
+Um relacionamento um-para-muitos ocorre quando um registro em uma tabela
+pode fazer referência a vários registros em outra tabela. O relacionamento um
+para muitos permite zero registros, um único registro ou vários registros na
+tabela relacionada
+
+-ManyToManyField
+-Um relacionamento muitos para muitos refere-se a um relacionamento quando
+-um registro em uma tabela se relaciona com vários registros na tabela
+referenciada e vice-versa
+-Requer a classe com a qual o modelo está relacionado
+-O relacionamento deve ser colocado somente em um dos modelos, não em
+ambos. Geralmente, são definidos no objeto que terão os dados editados por
+um formulário
+-Existem situações que exigem o armazenamento de detalhes na classe
+associativa. Neste casos, é preciso especificar o modelo que será usado para
+“gerenciar” a multiplicidade muitos-para-muitos. O modelo intermediário está
+associado ao relacionamento ManyToManyField pelo argumento through
+
+- talvez precise criar uma nova interface para aplicar o many to many. Talvez aplicar em "Assistencia"?
