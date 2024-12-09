@@ -47,6 +47,18 @@ REGISTROS:
 - e provavelmente mais outras coisas
 
 
+
+09/12/2024
+
+-afazeres: interface de listar voluntarios de um abrigo e cadastrar voluntarios em um abrigo, 
+a forma atual não funciona bem se for muitos voluntarios
+
+
+
+falta:
+- colocar certinho o assistencia adicionar no principal.html, linha 52
+
+
 -----------------------------------------------------------------------------------------------
 
 -ForeignKey

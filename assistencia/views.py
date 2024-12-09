@@ -1,16 +1,11 @@
 from django.shortcuts import render
-from django.views.generic.list import ListView  
 from django.contrib import messages
 from django.core.paginator import Paginator
-from django.contrib.messages.views import SuccessMessageMixin  # import SuccessMessageMixin
+from django.contrib.messages.views import SuccessMessageMixin
 from django.urls import reverse_lazy
 from .models import Assistencia
 from .forms import AssistenciaListForm, AssistenciaModelForm
-from django.views.generic.edit import UpdateView, CreateView, DeleteView
-
-
-# Create your views here.
-
+from django.views.generic import ListView, CreateView, UpdateView, DeleteView
 
 class AssistenciasView(ListView):
     model = Assistencia
@@ -24,7 +19,6 @@ class AssistenciasView(ListView):
             form = AssistenciaListForm()
         context['form'] = form
         return context
-    
     
     def get_queryset(self):
         qs = super(AssistenciasView, self).get_queryset()
@@ -43,27 +37,25 @@ class AssistenciasView(ListView):
             listagem = paginator.get_page(self.request.GET.get('page'))
             return listagem
         else:
-            return messages.info(self.request, 'Nenhum registro de assistencia encontrado')
-             
-            
-    class AssistenciaAddView(SuccessMessageMixin, CreateView):
-        model = Assistencia
-        form_class = AssistenciaModelForm
-        template_name = "assistencia_form.html"
-        success_url = reverse_lazy('assistencias')
-        success_message = "Registro de assistência adicionado com sucesso"
-    
-    
-    
-    class AssistenciaUpdateView(SuccessMessageMixin, UpdateView):
-        model = Assistencia
-        form_class = AssistenciaModelForm
-        template_name = "assistencia_form.html"
-        success_url = reverse_lazy('assistencias')
-        success_message = "Registro de assistência atualizado com sucesso"
-        
-    class AssistenciaDeleteView(SuccessMessageMixin, DeleteView):
-        model = Assistencia
-        template_name = "assistencia_apagar.html"
-        success_url = reverse_lazy('assistencias')
-        success_message = "Registro de assistência apagado com sucesso"
+            messages.info(self.request, 'Nenhum registro de assistência encontrado')
+            return qs
+
+class AssistenciaAddView(SuccessMessageMixin, CreateView):
+    model = Assistencia
+    form_class = AssistenciaModelForm
+    template_name = "assistencia_form.html"
+    success_url = reverse_lazy('assistencias')
+    success_message = "Registro de assistência adicionado com sucesso"
+
+class AssistenciaUpdateView(SuccessMessageMixin, UpdateView):
+    model = Assistencia
+    form_class = AssistenciaModelForm
+    template_name = "assistencia_form.html"
+    success_url = reverse_lazy('assistencias')
+    success_message = "Registro de assistência atualizado com sucesso"
+
+class AssistenciaDeleteView(SuccessMessageMixin, DeleteView):
+    model = Assistencia
+    template_name = "assistencia_apagar.html"
+    success_url = reverse_lazy('assistencias')
+    success_message = "Registro de assistência apagado com sucesso"

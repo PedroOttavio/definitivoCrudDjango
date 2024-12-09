@@ -3,17 +3,19 @@ from .models import Assistencia, Abrigo
 from vitimas.models import Vitima
 from voluntarios.models import Voluntario
 
-class AssistenciaListForm(forms.Form):
-    vitima = forms.ModelChoiceField(label = 'Vítima',queryset=Vitima.objects.all(), required=False)
-    voluntario = forms.ModelChoiceField(label = 'Voluntário',queryset=Voluntario.objects.all(), required=False)
-    abrigo = forms.ModelChoiceField(label = 'Abrigo',queryset=Abrigo.objects.all(), required=False)
-    
-    
-class AssistenciaForm(forms.ModelForm):
+class AssistenciaListForm(forms.ModelForm):
+    vitima = forms.ModelChoiceField(label='Vítima', queryset=Vitima.objects.all(), required=False)
+    voluntario = forms.ModelChoiceField(label='Voluntário', queryset=Voluntario.objects.all(), required=False)
+    abrigo = forms.ModelChoiceField(label='Abrigo', queryset=Abrigo.objects.all(), required=False)
+
     class Meta:
-        model = "Assistencia"
+        model = Assistencia
+        fields = ['vitima', 'voluntario', 'abrigo']
+
+class AssistenciaModelForm(forms.ModelForm):
+    class Meta:
+        model = Assistencia
         fields = ['data', 'descricao', 'prioridade', 'voluntario', 'vitima', 'status']
-        
         
         error_messages = {
             'data': {
@@ -35,4 +37,3 @@ class AssistenciaForm(forms.ModelForm):
                 'required': 'Status é obrigatório',
             },
         }
-    

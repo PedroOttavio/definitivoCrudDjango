@@ -48,6 +48,17 @@
                                 <li><a class="dropdown-item" href="{% url 'abrigos' %}">Listar Abrigos</a></li>
                             </ul>
                         </li>
+
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="assistenciaDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Assistências
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="assistenciaDropdown">
+                                <li><a class="dropdown-item" href="{% url 'assistencia_adicionar' %}">Cadastrar</a></li>
+                                <li><a class="dropdown-item" href="{% url 'assistencias' %}">Listar</a></li>
+                            </ul>
+                        </li>
+
                     </ul>
                     <a class="btn btn-outline-light" href="#"><i class="fas fa-sign-in-alt"></i> Login</a>
                 </div>
