@@ -3,6 +3,7 @@ from django.contrib.messages.views import SuccessMessageMixin
 from django.urls import reverse_lazy
 from django.core.paginator import Paginator
 from django.contrib import messages
+from django.shortcuts import render, get_object_or_404
 
 
 
@@ -51,4 +52,10 @@ class AbrigoDeleteView(SuccessMessageMixin, DeleteView):
     success_url = reverse_lazy('abrigos')
     success_message = 'Registro do abrigo apagado com sucesso.'
     
+
+def Voluntarios_por_abrigo(request, pk):
+    abrigo = Abrigo.objects.get(pk=pk)
+    voluntarios = abrigo.voluntarios.all()
+    return render(request, 'voluntarios_por_abrigo.html', {'abrigo': abrigo, 'voluntarios': voluntarios})
+
     
