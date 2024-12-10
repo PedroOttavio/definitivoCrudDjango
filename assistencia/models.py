@@ -14,13 +14,14 @@ class Assistencia(models.Model):
     )
     
     PRIORIDADE_OPCOES = (
-        ('A', 'Alta'),
-        ('M', 'Média'),
         ('B', 'Baixa'),
+        ('M', 'Média'),
+        ('A', 'Alta'),
+
     )
     
     data = models.DateField();
-    descricao = models.TextField('Descrição', help_text='Descrição do serviço')
+    descricao = models.TextField(max_length=100)
     prioridade = models.CharField('Prioridade', max_length=20, help_text='Prioridade do serviço', choices=PRIORIDADE_OPCOES, default='B')
     voluntario = models.ForeignKey('voluntarios.Voluntario', related_name='voluntario', help_text='Voluntário que realizou o serviço', on_delete=models.CASCADE)
     vitima = models.ForeignKey('vitimas.Vitima', related_name='vitima', help_text='Vítima atendida', on_delete=models.CASCADE) 

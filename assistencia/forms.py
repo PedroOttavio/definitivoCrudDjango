@@ -15,14 +15,13 @@ class AssistenciaListForm(forms.ModelForm):
 class AssistenciaModelForm(forms.ModelForm):
     class Meta:
         model = Assistencia
-        fields = ['data', 'descricao', 'prioridade', 'voluntario', 'vitima', 'status']
+        fields = ['data', 'prioridade', 'voluntario', 'vitima', 'status', 'descricao']
+        
+        widgets = {'descricao': forms.Textarea(attrs={'rows': 3, 'cols': 20})} #mudar o tamanho do campo
         
         error_messages = {
             'data': {
                 'required': 'Data é obrigatória',
-            },
-            'descricao': {
-                'required': 'Descrição é obrigatória',
             },
             'prioridade': {
                 'required': 'Prioridade é obrigatória',
@@ -36,4 +35,7 @@ class AssistenciaModelForm(forms.ModelForm):
             'status': {
                 'required': 'Status é obrigatório',
             },
+            'descricao': {
+                'required': 'Descrição é obrigatória',
+            }
         }

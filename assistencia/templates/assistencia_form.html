@@ -1,29 +1,24 @@
-{% extends 'principal.html' %} {% load django_bootstrap5 %} {% block content %}
+{% extends 'principal.html' %}
+{% load django_bootstrap5 %}
+{% block content %}
+    
+    <div class="card shadow m-3 col-md-6 mx-auto">
+        <div class="card-body">
+            <div class="row">
+                <h3 class="text-center">Cadastro de Assistencia</h3>
+                <form method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    {% bootstrap_form form %}
 
-<div class="card shadow m-3 mx-auto" style="max-width: 800px">
-  <div class="card-body">
-    <h3 class="text-center mb-4">Cadastro de Voluntário</h3>
-    <form
-      method="POST"
-      enctype="multipart/form-data"
-      class="needs-validation"
-      novalidate
-    >
-      {% csrf_token %} {% bootstrap_form form %}
-      <div class="text-end">
-        {% bootstrap_button button_type="submit" content="Salvar" %}
-        <a
-          href="{% url 'assistencias' %}"
-          class="btn btn-secondary text-white"
-          type="button"
-        >
-          <span class="text">Cancelar</span>
-        </a>
-      </div>
-
-      <div class="text-end mt-4"></div>
-    </form>
-  </div>
-</div>
+                    <div class="text-end">
+                        {% bootstrap_button button_type="submit" content="Salvar" %}
+                        <a href="{% url 'assistencias' %}" class="btn btn-secondary text-white" type="button">
+                           <span class="text">Cancelar</span>
+                        </a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 
 {% endblock %}
