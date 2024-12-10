@@ -4,15 +4,6 @@ from .models import Abrigo, Voluntario
 
 class AbrigoModelForm(forms.ModelForm):
     
-    
-    voluntarios = forms.ModelMultipleChoiceField(
-        queryset= Voluntario.objects.all(),
-        widget=forms.CheckboxSelectMultiple,
-        required=False,
-        label="Voluntários"
-    )
-    
-    
     class Meta:
         model = Abrigo
         fields = '__all__'
@@ -40,3 +31,21 @@ class AbrigoModelForm(forms.ModelForm):
                 'required': "O status do abrigo é obrigatório",
             },
         }
+        
+        
+        # classe voluntario, para podermos adicionar vários voluntarios na interface do abrigo
+class VoluntarioModelForm(forms.Form):
+    
+    voluntarios = forms.ModelMultipleChoiceField(
+        queryset=Voluntario.objects.all(),
+        widget=forms.CheckboxSelectMultiple,
+        required=False,
+        label="Adicionar Voluntários"
+        
+    )
+    voluntarios_remover = forms.ModelMultipleChoiceField(
+        queryset=Voluntario.objects.all(),
+        widget=forms.CheckboxSelectMultiple,
+        required=False,
+        label="Remover Voluntários"
+    )

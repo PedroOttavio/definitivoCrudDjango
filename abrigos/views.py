@@ -3,12 +3,12 @@ from django.contrib.messages.views import SuccessMessageMixin
 from django.urls import reverse_lazy
 from django.core.paginator import Paginator
 from django.contrib import messages
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 
 
 
 from .models import Abrigo
-from .forms import AbrigoModelForm
+from .forms import AbrigoModelForm, VoluntarioModelForm
 
 class AbrigosView(ListView):
     model = Abrigo
@@ -53,9 +53,27 @@ class AbrigoDeleteView(SuccessMessageMixin, DeleteView):
     success_message = 'Registro do abrigo apagado com sucesso.'
     
 
+
 def Voluntarios_por_abrigo(request, pk):
     abrigo = Abrigo.objects.get(pk=pk)
     voluntarios = abrigo.voluntarios.all()
     return render(request, 'voluntarios_por_abrigo.html', {'abrigo': abrigo, 'voluntarios': voluntarios})
 
-    
+
+#adicionar vários voluntarios no combo box do abrigo, resta saber se vai funcionar
+
+def adicionar_voluntarios(request, pk):
+    abrigo = get_object_or_404(Abrigo, pk=pk)
+    if request.method == 'POST':
+        form = VoluntarioModelForm(request.POST)
+        if form.is_valid():
+            voluntarios_adicionar = form.cleaned_data.get('voluntarios', [])
+            voluntarios_remover = form.cleaned_data.get('voluntarios_remover', [])
+            abrigo.voluntarios.add(*voluntarios_adicionar)
+            abrigo.voluntarios.remove(*voluntarios_remover)
+            abrigo.save()
+            messages.success(request, 'Voluntários atualizados com sucesso.')
+            return redirect('abrigos')
+    else:
+        form = VoluntarioModelForm(initial={'voluntarios': abrigo.voluntarios.all()})
+    return render(request, 'adicionar_voluntarios.html', {'form': form, 'abrigo': abrigo})
