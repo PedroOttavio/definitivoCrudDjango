@@ -40,27 +40,35 @@
                             <td>{{ abrigo.endereco }}</td>
                             <td>{{ abrigo.capacidade }}</td>
                             <td style="text-align: center">
+
+                                {% if perms.abrigo.change_abrigo %}
                                 <a href="{% url 'abrigo_editar' abrigo.pk %}">
                                     <span class="icon">
                                         <i class="fas fa-edit"></i>
                                     </span>
                                 </a>
-                                <a href="{% url 'abrigo_apagar' abrigo.pk %}">
-                                    <span class="icon text-danger">
-                                        <i class="far fa-trash-alt"></i>
-                                    </span>
-                                </a>
-                                <a href="{% url 'abrigo_voluntarios' abrigo.pk %}">
-                                    <span class="icon text-info">
-                                        <i class="fas fa-users"></i>
-                                    </span>
-                                </a>
-                                <a href="{% url 'adicionar_voluntarios' abrigo.pk %}">
-                                    <span class="icon text-success">
-                                        <i class="fas fa-plus"></i>
-                                    </span>
-                                </a>
-                                
+                                {% endif %}
+                                {% if perms.abrigo.delete_abrigo %}
+                                    <a href="{% url 'abrigo_apagar' abrigo.pk %}">
+                                        <span class="icon text-danger">
+                                            <i class="far fa-trash-alt"></i>
+                                        </span>
+                                    </a>
+                                {% endif %}
+                                {% if perms.abrigo.view_voluntario %}
+                                    <a href="{% url 'abrigo_voluntarios' abrigo.pk %}">
+                                        <span class="icon text-info">
+                                            <i class="fas fa-users"></i>
+                                        </span>
+                                    </a>
+                                {% endif %}
+                                {% if perms.abrigo.add_voluntario %}
+                                    <a href="{% url 'adicionar_voluntarios' abrigo.pk %}">
+                                        <span class="icon text-success">
+                                            <i class="fas fa-plus"></i>
+                                        </span>
+                                    </a>
+                                {% endif %}
                                 
 
                             </td>

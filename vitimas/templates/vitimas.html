@@ -52,16 +52,20 @@
               <td style="text-align: center">
 
                 <!-- Editar e exluir linha do Vitimas -->
-                 <a href="{% url 'vitima_editar' vitima.pk %}">  
-                  <span class="icon">
-                    <i class="fas fa-edit"></i> 
-                  </span>
-                </a>
-                <a href="{% url 'vitima_apagar' vitima.pk %}">
-                  <span class="icon text-danger">
-                    <i class="far fa-trash-alt"></i>
-                  </span>
-                </a>
+                {% if perms.vitimas.change_vitima %} 
+                    <a href="{% url 'vitima_editar' vitima.pk %}">  
+                      <span class="icon">
+                        <i class="fas fa-edit"></i> 
+                      </span>
+                    </a>
+                {% endif %}
+                {% if perms.vitimas.delete_vitima %}
+                    <a href="{% url 'vitima_apagar' vitima.pk %}">
+                      <span class="icon text-danger">
+                        <i class="far fa-trash-alt"></i>
+                      </span>
+                    </a>
+                {% endif %}
               </td>  
               <div class="modal" tabindex="-1" id="modal{{vitima.id}}">
                 <div class="modal-dialog">

@@ -8,8 +8,11 @@ from django.core.mail import send_mail
 from .forms import AssistenciaListForm, AssistenciaModelForm
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView
 from django.template.loader import render_to_string
+from django.contrib.auth.mixins import LoginRequiredMixin
 
-class AssistenciasView(ListView):
+class AssistenciasView(LoginRequiredMixin, ListView):
+    permission_required = 'assistencia.view_assistencia'
+    permission_denied_message = 'Acesso negado'
     model = Assistencia
     template_name = 'assistencias.html'
     
@@ -42,7 +45,9 @@ class AssistenciasView(ListView):
             messages.info(self.request, 'Nenhum registro de assistência encontrado')
             return qs
 
-class AssistenciaAddView(SuccessMessageMixin, CreateView):
+class AssistenciaAddView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
+    permission_required = 'assistencia.add_assistencia'
+    permission_denied_message = 'Acesso negado'
     model = Assistencia
     form_class = AssistenciaModelForm
     template_name = "assistencia_form.html"
@@ -79,14 +84,18 @@ class AssistenciaAddView(SuccessMessageMixin, CreateView):
     
 
 
-class AssistenciaUpdateView(SuccessMessageMixin, UpdateView):
+class AssistenciaUpdateView(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
+    permission_required = 'assistencia.update_assistencia'
+    permission_denied_message = 'Acesso negado'
     model = Assistencia
     form_class = AssistenciaModelForm
     template_name = "assistencia_form.html"
     success_url = reverse_lazy('assistencias')
     success_message = "Registro de assistência atualizado com sucesso"
 
-class AssistenciaDeleteView(SuccessMessageMixin, DeleteView):
+class AssistenciaDeleteView(LoginRequiredMixin,SuccessMessageMixin, DeleteView):
+    permission_required = 'assistencia.delete_assistencia'
+    permission_denied_message = 'Acesso negado'
     model = Assistencia
     template_name = "assistencia_apagar.html"
     success_url = reverse_lazy('assistencias')

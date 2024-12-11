@@ -49,16 +49,20 @@
                             </td>
                             <td>{{ assistencia.descricao }}</td>
                             <td style="text-align: center">
-                                <a href="{% url 'assistencia_editar' assistencia.pk %}">
-                                    <span class="icon">
-                                        <i class="fas fa-edit"></i>
-                                    </span>
-                                </a>
-                                <a href="{% url 'assistencia_apagar' assistencia.pk %}">
-                                    <span class="icon">
-                                        <i class="far fa-trash-alt"></i>
-                                    </span>
-                                </a>
+                                {% if perms.assistencia.change_assistencia %}
+                                    <a href="{% url 'assistencia_editar' assistencia.pk %}">
+                                        <span class="icon">
+                                            <i class="fas fa-edit"></i>
+                                        </span>
+                                    </a>
+                                {% endif %}
+                                {% if perms.assistencia.delete_assistencia %}
+                                    <a href="{% url 'assistencia_apagar' assistencia.pk %}">
+                                        <span class="icon">
+                                            <i class="far fa-trash-alt"></i>
+                                        </span>
+                                    </a>
+                                {% endif %}
                             </td>
                         </tr>
                         {% endfor %}

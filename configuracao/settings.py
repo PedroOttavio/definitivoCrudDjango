@@ -145,3 +145,8 @@ EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'pedroottavioss@gmail.com'
 EMAIL_HOST_PASSWORD = 'pwim gchd mrxl ahwu'
 DEFAULT_FROM_EMAIL = 'AgendamentoDesastres'
+
+
+LOGIN_REDIRECT_URL = 'index'
+LOGIN_URL = 'login'
+LOGOUT_REDIRECT_URL = 'login'

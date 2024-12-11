@@ -3,12 +3,15 @@ from django.contrib.messages.views import SuccessMessageMixin
 from django.urls import reverse_lazy
 from django.core.paginator import Paginator
 from django.contrib import messages
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 
 from .models import Voluntario
 from .forms import VoluntarioModelForm
 
-class VoluntariosView(ListView):
+class VoluntariosView(LoginRequiredMixin, ListView):
+    permission_required = 'voluntarios.view_voluntario'
+    permission_denied_message = 'Acesso negado'
     model = Voluntario
     template_name = 'voluntarios.html'
     
@@ -26,7 +29,9 @@ class VoluntariosView(ListView):
             return messages.info(self.request, 'Nenhum voluntário encontrado.')
         
 
-class VoluntarioAddView(SuccessMessageMixin ,CreateView):
+class VoluntarioAddView(LoginRequiredMixin, SuccessMessageMixin ,CreateView):
+    permission_required = 'voluntarios.add_voluntario'
+    permission_denied_message = 'Acesso negado'
     model = Voluntario
     form_class = VoluntarioModelForm
     template_name = 'voluntario_form.html'
@@ -35,6 +40,8 @@ class VoluntarioAddView(SuccessMessageMixin ,CreateView):
     
     
 class VoluntarioUpdateView(SuccessMessageMixin, UpdateView):
+    permission_required = 'voluntarios.update_voluntario'
+    permission_denied_message = 'Acesso negado'
     model = Voluntario
     form_class = VoluntarioModelForm
     template_name = 'voluntario_form.html'
@@ -43,6 +50,8 @@ class VoluntarioUpdateView(SuccessMessageMixin, UpdateView):
     
     
 class VoluntarioDeleteView(SuccessMessageMixin, DeleteView):
+    permission_required = 'voluntarios.delete_abrigo'
+    permission_denied_message = 'Acesso negado'
     model = Voluntario
     template_name = 'voluntario_apagar.html'
     success_url = reverse_lazy('voluntarios')

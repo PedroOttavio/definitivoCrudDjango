@@ -47,16 +47,20 @@
               <td style="text-align: center">
 
                 <!-- Editar e exluir linha do Voluntarios -->
-                <a href="{% url 'voluntario_editar' voluntario.pk %}"">  
-                  <span class="icon">
-                    <i class="fas fa-edit"></i> 
-                  </span>
-                </a>
-                <a href="{% url 'voluntario_apagar' voluntario.pk %}">
-                  <span class="icon text-danger">
-                    <i class="far fa-trash-alt"></i>
-                  </span>
-                </a>
+                 {% if perms.voluntarios.change_voluntario %}
+                    <a href="{% url 'voluntario_editar' voluntario.pk %}"">  
+                      <span class="icon">
+                        <i class="fas fa-edit"></i> 
+                      </span>
+                    </a>
+                {% endif %}
+                {% if perms.voluntarios.delete_voluntario %}
+                  <a href="{% url 'voluntario_apagar' voluntario.pk %}">
+                    <span class="icon text-danger">
+                      <i class="far fa-trash-alt"></i>
+                    </span>
+                  </a>
+                {% endif %}
               </td>
             </tr>
             {% empty %}
