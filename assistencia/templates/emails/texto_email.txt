@@ -1,0 +1,16 @@
+Olá {{vitima}}!
+
+Este é um e-mail padrão para informar que sua assistencia foi marcada como Concluida. 
+
+Dados do atendimento.
+Dia: {{ data }}
+Voluntário que prestou o atendimento: {{ voluntario }}
+
+descricão do atendimento: 
+{% for desc in descricao %}
+    {{ desc }} \n
+{% endfor %}
+
+Se houver alguma pendencia, entrar em contato por meio de nossos canais de atendimento. 
+Atenciosamente!
+

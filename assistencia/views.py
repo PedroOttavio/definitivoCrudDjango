@@ -1,11 +1,13 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.core.paginator import Paginator
 from django.contrib.messages.views import SuccessMessageMixin
 from django.urls import reverse_lazy
 from .models import Assistencia
+from django.core.mail import send_mail
 from .forms import AssistenciaListForm, AssistenciaModelForm
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView
+from django.template.loader import render_to_string
 
 class AssistenciasView(ListView):
     model = Assistencia
@@ -46,6 +48,36 @@ class AssistenciaAddView(SuccessMessageMixin, CreateView):
     template_name = "assistencia_form.html"
     success_url = reverse_lazy('assistencias')
     success_message = "Registro de assistência adicionado com sucesso"
+    
+        
+    def form_valid(self, form):
+        response = super().form_valid(form)
+        if form.instance.status in ['Realizado', 'R']:
+            self.enviar_email(form.instance)
+        return response
+    
+    def enviar_email(self, assistencia):
+        email = []
+        email.append(assistencia.vitima.email)
+        descricao = []
+
+        dados = {'vitima': assistencia.vitima.nome, 'voluntario': assistencia.voluntario.nome, 
+                 'data': assistencia.data, 'hora': assistencia.hora,
+                 'descricao': assistencia.descricao}
+        
+        texto_email = render_to_string('emails/texto_email.txt', dados)
+        html_email = render_to_string('emails/texto_email.html', dados)
+        send_mail(
+                  subject='Assistencia prestada', 
+                  message=texto_email,
+                  from_email='pedroottavioss@gmail.com',
+                  recipient_list=email,
+                  html_message=html_email, 
+                  fail_silently=False
+        )
+        return redirect('assistencias')
+    
+
 
 class AssistenciaUpdateView(SuccessMessageMixin, UpdateView):
     model = Assistencia
@@ -59,3 +91,6 @@ class AssistenciaDeleteView(SuccessMessageMixin, DeleteView):
     template_name = "assistencia_apagar.html"
     success_url = reverse_lazy('assistencias')
     success_message = "Registro de assistência apagado com sucesso"
+    
+    
+    

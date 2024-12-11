@@ -1,0 +1,18 @@
+<h3>Olá <strong>{{ vitima }}</strong>! </h3>
+
+<p>Este é um e-mail padrão para informar que sua assistencia foi marcada como Concluida.</p>
+
+<h3>Dados do atendimento</h3>
+<p><strong>Data:</strong> {{ data }}</p> 
+<p><strong>Voluntário que prestou o atendimento:</strong>  {{ voluntario }}</p>
+
+<h4>Descricão do atendimento</h4>
+
+{% for desc in descricao %}
+    <p>{{ desc }}</p>
+{% endfor %}
+
+<p>Se houver alguma pendência, entrar em contato por meio de nossos canais de atendimento. </p>
+
+<p>Atenciosamente, Equipe de Assistência</p>
+
