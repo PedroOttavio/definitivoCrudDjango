@@ -23,6 +23,7 @@ class Vitima(Pessoa):
     class Meta:
         verbose_name = 'Vítima'
         verbose_name_plural = 'Vítimas'
+        ordering = [Upper('nome')] #ordenar pelo nome
         
         
     def __str__(self):

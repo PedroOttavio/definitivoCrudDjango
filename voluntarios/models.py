@@ -1,4 +1,5 @@
 from django.db import models
+from django.db.models.functions import Upper
 
 # Create your models here.
 
@@ -24,7 +25,8 @@ class Voluntario(Pessoa):
     class Meta:
         verbose_name = 'Voluntário'
         verbose_name_plural = 'Voluntários'
-        
+        ordering = [Upper('nome')] #ordenar pelo nome
+       
     def __str__(self):
         return super().nome
     

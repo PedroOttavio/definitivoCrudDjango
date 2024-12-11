@@ -30,7 +30,8 @@ class Assistencia(models.Model):
     class Meta:
         verbose_name = 'Assistencia'
         verbose_name_plural = 'Assistencias'
-        
+        ordering = ['data'] #ordenar pela data, supostamente
+ 
         def __str__(self):
             return f'{self.descricao} - {self.voluntario} - {self.vitima}'
         

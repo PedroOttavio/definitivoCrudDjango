@@ -1,5 +1,6 @@
 from django.db import models
 from voluntarios.models import Voluntario  # Import Voluntario class
+from django.db.models.functions import Upper  # Import Upper function
 
 
 
@@ -18,6 +19,8 @@ class Abrigo(models.Model):
     class Meta:
         verbose_name = 'Abrigo'
         verbose_name_plural = 'Abrigos'
+        ordering = [Upper('nome')] #ordenar pelo nome
+
 
     def __str__(self):
         return self.nome

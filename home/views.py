@@ -1,4 +1,7 @@
 from django.views.generic import TemplateView
 
-class IndexView(TemplateView):
-    template_name = 'index.html'
+from abrigos.models import Abrigo
+from assistencia.models import Assistencia
+from vitimas.models import Vitima
+from voluntarios.models import Voluntario
+
